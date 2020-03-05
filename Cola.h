@@ -43,9 +43,6 @@ public:
     int colaVacia();
     
     ~Cola();
-    //{
-        //borrarCola ();
-    //}
 
 };
 

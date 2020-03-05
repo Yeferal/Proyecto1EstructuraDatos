@@ -25,6 +25,13 @@ Pila::Pila(const Pila& orig) {
 }
 
 Pila::~Pila() {
+    NodoPila* n;
+    while(!pilaVacia())
+    {
+        n = cima;
+        cima = cima -> siguiente;
+        delete n;
+    }
 }
 
 
@@ -48,7 +55,9 @@ Carta Pila::quitar()
     if (pilaVacia())
         throw "Pila vacía, no se puede extraer.";
     Carta aux = cima -> carta;
+    NodoPila* nuevo = cima;
     cima = cima -> siguiente;
+    delete cima;
     return aux;
 }
 

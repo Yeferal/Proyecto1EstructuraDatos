@@ -51,7 +51,7 @@ public:
     void getAnterior(int numero);
     Carta &getUltimo();
     bool isListaVacia();
-    virtual ~Lista();
+    ~Lista();
 private:
     int tamanio;
 };

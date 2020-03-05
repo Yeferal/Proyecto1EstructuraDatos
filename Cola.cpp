@@ -25,6 +25,18 @@ Cola::Cola(const Cola& orig) {
 }
 
 Cola::~Cola() {
+    if(frente != NULL){
+
+        while(frente != NULL){
+
+        NodoCola* a;
+        a = frente;
+        frente = frente -> siguiente;
+        delete a;
+        }
+        frente = NULL;
+        fin = NULL;
+    }
 }
 
 void Cola :: insertar(Carta &c)

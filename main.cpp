@@ -24,21 +24,21 @@
 using namespace std;
 
 Carta baraja [52];
-Lista lista1;
-Lista lista2;
-Lista lista3;
-Lista lista4;
-Lista lista5;
-Lista lista6;
-Lista lista7;
+Lista* lista1 = new Lista();
+Lista* lista2 = new Lista();
+Lista* lista3 = new Lista();
+Lista* lista4 = new Lista();
+Lista* lista5 = new Lista();
+Lista* lista6 = new Lista();
+Lista* lista7 = new Lista();
 
-Cola cola1;
-Cola cola2;
+Cola* cola1 = new Cola();
+Cola* cola2 = new Cola();
 
-Pila pila1;
-Pila pila2;
-Pila pila3;
-Pila pila4;
+Pila* pila1 = new Pila();
+Pila* pila2 = new Pila();
+Pila* pila3 = new Pila();
+Pila* pila4 = new Pila();
 
 Lista siclar(int n);
 Cola siclarCola();
@@ -110,136 +110,193 @@ void iniciarBaraja(){
 
 void barajear(){
     srand(time(NULL));
-    lista1 = Lista();
-    lista2 = Lista();
-    lista3 = Lista();
-    lista4 = Lista();
-    lista5 = Lista();
-    lista6 = Lista();
-    lista7 = Lista();
-    cola1 = Cola();
-    cola2 = Cola();
-    pila1 = Pila();
-    pila2 = Pila();
-    pila3 = Pila();
-    pila4 = Pila();
-    
-   
-    lista1 = siclar(1);
-    lista1.ultimo->carta.SetEstado(1);
-    lista2 = siclar(2);
-    lista2.ultimo->carta.SetEstado(1);
-    lista3 = siclar(3);
-    lista3.ultimo->carta.SetEstado(1);
-    lista4 = siclar(4);
-    lista4.ultimo->carta.SetEstado(1);
-    lista5 = siclar(5);
-    lista5.ultimo->carta.SetEstado(1);
-    lista6 = siclar(6);
-    lista6.ultimo->carta.SetEstado(1);
-    lista7 = siclar(7);
-    lista7.ultimo->carta.SetEstado(1);
-    
-    cola1 = siclarCola();
-    
-}
-
-Lista siclar(int n){
-    Lista lista = Lista();
+    /*lista1 = new Lista();
+    lista2 = new Lista();
+    lista3 = new Lista();
+    lista4 = new Lista();
+    lista5 = new Lista();
+    lista6 = new Lista();
+    lista7 = new Lista();
+    cola1 = new Cola();
+    cola2 = new Cola();
+    pila1 = new Pila();
+    pila2 = new Pila();
+    pila3 = new Pila();
+    pila4 = new Pila();*/
     int num = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < 1; i++) {
         num = rand()%52;
         while (baraja[num].GetNumero()==0) {
             num = rand()%52;
         }
         Carta &c = baraja[num];
         c.SetEstado(0);
-        lista.insertar(c);
+        lista1->insertar(c);
 
         baraja[num].SetNumero(0);
                 
     }
-    return lista;
-    
-}
+    lista1->ultimo->carta.SetEstado(1);
+    for (int i = 0; i < 2; i++) {
+        num = rand()%52;
+        while (baraja[num].GetNumero()==0) {
+            num = rand()%52;
+        }
+        Carta &c = baraja[num];
+        c.SetEstado(0);
+        lista2->insertar(c);
 
-Cola siclarCola(){
-    Cola colaT = Cola();
-    int num = 0;
-    //cout<<"Hola: "<<lista.primero->carta.GetNombre()<<endl;
+        baraja[num].SetNumero(0);
+                
+    }
+    lista2->ultimo->carta.SetEstado(1);
+    for (int i = 0; i < 3; i++) {
+        num = rand()%52;
+        while (baraja[num].GetNumero()==0) {
+            num = rand()%52;
+        }
+        Carta &c = baraja[num];
+        c.SetEstado(0);
+        lista3->insertar(c);
+
+        baraja[num].SetNumero(0);
+                
+    }
+    lista3->ultimo->carta.SetEstado(1);
+    for (int i = 0; i < 4; i++) {
+        num = rand()%52;
+        while (baraja[num].GetNumero()==0) {
+            num = rand()%52;
+        }
+        Carta &c = baraja[num];
+        c.SetEstado(0);
+        lista4->insertar(c);
+
+        baraja[num].SetNumero(0);
+                
+    }
+    lista4->ultimo->carta.SetEstado(1);
+    for (int i = 0; i < 5; i++) {
+        num = rand()%52;
+        while (baraja[num].GetNumero()==0) {
+            num = rand()%52;
+        }
+        Carta &c = baraja[num];
+        c.SetEstado(0);
+        lista5->insertar(c);
+
+        baraja[num].SetNumero(0);
+                
+    }
+    lista5->ultimo->carta.SetEstado(1);
+    for (int i = 0; i < 6; i++) {
+        num = rand()%52;
+        while (baraja[num].GetNumero()==0) {
+            num = rand()%52;
+        }
+        Carta &c = baraja[num];
+        c.SetEstado(0);
+        lista6->insertar(c);
+
+        baraja[num].SetNumero(0);
+                
+    }
+    lista6->ultimo->carta.SetEstado(1);
+    for (int i = 0; i < 7; i++) {
+        num = rand()%52;
+        while (baraja[num].GetNumero()==0) {
+            num = rand()%52;
+        }
+        Carta &c = baraja[num];
+        c.SetEstado(0);
+        lista7->insertar(c);
+
+        baraja[num].SetNumero(0);
+         //lista7->ultimo->carta.SetEstado(1);       
+    }
+    lista7->ultimo->carta.SetEstado(1);
+
     for (int i = 0; i < 52; i++) {
         //num = rand()%52;
         if(baraja[i].GetNumero()!=0) {
             Carta &c = baraja[i];
             //c.pintar();
-            colaT.insertar(c);
+            cola1->insertar(c);
             num++;
             baraja[i].SetNumero(0);
         }
         
     }
     
-    return colaT;
-    
 }
 
 void pintar(){
+    cout<<endl;
+    cout<<endl;
+    cout<<"______________________________________________________________________________________________________________________________________________________________________"<<endl;
+    cout<<"______________________________________________________________________________________________________________________________________________________________________"<<endl;
+    cout<<endl;
     cout<<"Seccion 1--------------------------------------------------------------------------"<<endl;
     
-    if(!cola1.colaVacia()){
-        cola1.frenteCola().SetEstado(1);
-        Carta &t = cola1.frenteCola();
+    if(!cola1->colaVacia()){
+        cola1->frenteCola().SetEstado(1);
+        Carta &t = cola1->frenteCola();
         cout<<"       "<<"_______"<<"    "<<"_______"<<endl;
-        cout<<"[0]    "<<"|"<<t.getNumeroS()<<" "<<t.GetNombre()<<""<<t.getColorS()<<"|"<<ends;
+        cout<<"       "<<"|"<<t.getNumeroS()<<" "<<t.GetNombre()<<""<<t.getColorS()<<"|"<<ends;
+    }else{
+        cout<<"       "<<"_______"<<"    "<<"_______"<<endl;
+        cout<<"       "<<"|     |"<<ends;
     }
         
-    if(cola2.colaVacia()){
+    if(cola2->colaVacia()){
         cout<<"    "<<"|     |"<<endl;
     }else{
         cout<<"    "<<"|#####|"<<endl;
     }
     cout<<"       "<<"¯¯¯¯¯¯¯"<<"    "<<"¯¯¯¯¯¯¯"<<endl;
     cout<<"Seccion 2--------------------------------------------------------------------------"<<endl;
-    cout<<"[1]    "<<ends;
-    lista1.desplegarLista();
-    cout<<"[2]    "<<ends;
-    lista2.desplegarLista();
-    cout<<"[3]    "<<ends;
-    lista3.desplegarLista();
-    cout<<"[4]    "<<ends;
-    lista4.desplegarLista();
-    cout<<"[5]    "<<ends;
-    lista5.desplegarLista();
-    cout<<"[6]    "<<ends;
-    lista6.desplegarLista();
-    cout<<"[7]    "<<ends;
-    lista7.desplegarLista();
+    cout<<endl;
+    cout<<"[1]"<<ends;
+    lista1->desplegarLista();
+    cout<<"[2]"<<ends;
+    lista2->desplegarLista();
+    cout<<"[3]"<<ends;
+    lista3->desplegarLista();
+    cout<<"[4]"<<ends;
+    lista4->desplegarLista();
+    cout<<"[5]"<<ends;
+    lista5->desplegarLista();
+    cout<<"[6]"<<ends;
+    lista6->desplegarLista();
+    cout<<"[7]"<<ends;
+    lista7->desplegarLista();
     
     cout<<"Seccion 3--------------------------------------------------------------------------"<<endl;
+    cout<<endl;
     cout<<"       "<<"_______"<<"    "<<"_______"<<"    "<<"_______"<<"    "<<"_______"<<endl;
-    if(!pila1.pilaVacia()){
-         Carta &c = pila1.cimaPila();
+    if(!pila1->pilaVacia()){
+         Carta &c = pila1->cimaPila();
          cout<<"       "<<"|"<<c.getNumeroS()<<" "<<c.GetNombre()<<""<<c.getColorS()<<"|"<<ends;
     }else{
         cout<<"       "<<"|     |"<<ends;
     }
     
-    if(!pila2.pilaVacia()){
-         Carta &c = pila2.cimaPila();
+    if(!pila2->pilaVacia()){
+         Carta &c = pila2->cimaPila();
          cout<<"    "<<"|"<<c.getNumeroS()<<" "<<c.GetNombre()<<""<<c.getColorS()<<"|"<<ends;
     }else{
         cout<<"    "<<"|     |"<<ends;
     }
     
-    if(!pila3.pilaVacia()){
-         Carta &c = pila3.cimaPila();
+    if(!pila3->pilaVacia()){
+         Carta &c = pila3->cimaPila();
          cout<<"    "<<"|"<<c.getNumeroS()<<" "<<c.GetNombre()<<""<<c.getColorS()<<"|"<<ends;
     }else{
         cout<<"    "<<"|     |"<<ends;
     }
     
-    if(!pila4.pilaVacia()){
-         Carta &c = pila4.cimaPila();
+    if(!pila4->pilaVacia()){
+         Carta &c = pila4->cimaPila();
          cout<<"    "<<"|"<<c.getNumeroS()<<" "<<c.GetNombre()<<""<<c.getColorS()<<"|"<<endl;
     }else{
         cout<<"    "<<"|     |"<<endl;
@@ -251,24 +308,24 @@ void pintar(){
 }
 void siguienteCarta(){
     
-       Carta &temp = cola1.frenteCola(); 
-       cola2.insertar(temp);
-       cola1.quitar();
-       if(cola1.colaVacia() && !cola2.colaVacia()){
-            while (!cola2.colaVacia()) {
-                Carta &tem = cola2.frenteCola();
-                cola1.insertar(tem);
-                cola2.quitar();
+       Carta &temp = cola1->frenteCola(); 
+       cola2->insertar(temp);
+       cola1->quitar();
+       if(cola1->colaVacia() && !cola2->colaVacia()){
+            while (!cola2->colaVacia()) {
+                Carta &tem = cola2->frenteCola();
+                cola1->insertar(tem);
+                cola2->quitar();
             }
         }
 }
 
 void moverCarta(int de,int hacia){
     if(de==0){
-        if (!cola1.colaVacia()) {
-            Carta &cDe=cola1.frenteCola();
+        if (!cola1->colaVacia()) {
+            Carta &cDe=cola1->frenteCola();
             if(moverHaciaSeccion2(cDe,hacia)){
-                cola1.quitar();
+                cola1->quitar();
             }else{
                 cout<<"No se puede mover esta carta"<<endl;
             }
@@ -276,21 +333,21 @@ void moverCarta(int de,int hacia){
             cout<<"No existe carta"<<endl;
         }
 
-        if(cola1.colaVacia() && !cola2.colaVacia()){
-            while (!cola2.colaVacia()) {
-                Carta &tem = cola2.frenteCola();
-                cola1.insertar(tem);
-                cola2.quitar();
+        if(cola1->colaVacia() && !cola2->colaVacia()){
+            while (!cola2->colaVacia()) {
+                Carta &tem = cola2->frenteCola();
+                cola1->insertar(tem);
+                cola2->quitar();
             }
         }
         
     }else if(de!=hacia){
         switch(de){
             case 1:
-                if (!lista1.isListaVacia()) {
-                    Carta &cDe= lista1.ultimo->carta;
+                if (!lista1->isListaVacia()) {
+                    Carta &cDe= lista1->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista1.quitarUltimo();
+                        lista1->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -299,10 +356,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 2:
-                if (!lista2.isListaVacia()) {
-                    Carta &cDe= lista2.ultimo->carta;
+                if (!lista2->isListaVacia()) {
+                    Carta &cDe= lista2->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista2.quitarUltimo();
+                        lista2->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -311,10 +368,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 3:
-                if (!lista3.isListaVacia()) {
-                    Carta &cDe= lista3.ultimo->carta;
+                if (!lista3->isListaVacia()) {
+                    Carta &cDe= lista3->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista3.quitarUltimo();
+                        lista3->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -323,10 +380,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 4:
-                if (!lista4.isListaVacia()) {
-                    Carta &cDe= lista4.ultimo->carta;
+                if (!lista4->isListaVacia()) {
+                    Carta &cDe= lista4->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista4.quitarUltimo();
+                        lista4->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -335,10 +392,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 5:
-                if (!lista5.isListaVacia()) {
-                    Carta &cDe= lista5.ultimo->carta;
+                if (!lista5->isListaVacia()) {
+                    Carta &cDe= lista5->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista5.quitarUltimo();
+                        lista5->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -347,10 +404,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 6:
-                if (!lista6.isListaVacia()) {
-                    Carta &cDe= lista6.ultimo->carta;
+                if (!lista6->isListaVacia()) {
+                    Carta &cDe= lista6->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista6.quitarUltimo();
+                        lista6->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -359,10 +416,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 7:
-                if (!lista7.isListaVacia()) {
-                    Carta &cDe= lista7.ultimo->carta;
+                if (!lista7->isListaVacia()) {
+                    Carta &cDe= lista7->ultimo->carta;
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        lista7.quitarUltimo();
+                        lista7->quitarUltimo();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -371,10 +428,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 8:
-                if (!pila1.pilaVacia()) {
-                    Carta &cDe= pila1.cimaPila();
+                if (!pila1->pilaVacia()) {
+                    Carta &cDe= pila1->cimaPila();
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        pila1.quitar();
+                        pila1->quitar();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -383,10 +440,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 9:
-                if (!pila2.pilaVacia()) {
-                    Carta &cDe= pila2.cimaPila();
+                if (!pila2->pilaVacia()) {
+                    Carta &cDe= pila2->cimaPila();
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        pila2.quitar();
+                        pila2->quitar();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -395,10 +452,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 10:
-                if (!pila3.pilaVacia()) {
-                    Carta &cDe= pila3.cimaPila();
+                if (!pila3->pilaVacia()) {
+                    Carta &cDe= pila3->cimaPila();
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        pila3.quitar();
+                        pila3->quitar();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -407,10 +464,10 @@ void moverCarta(int de,int hacia){
                 }
                 break;
             case 11:
-                if (!pila4.pilaVacia()) {
-                    Carta &cDe= pila4.cimaPila();
+                if (!pila4->pilaVacia()) {
+                    Carta &cDe= pila4->cimaPila();
                     if(moverHaciaSeccion2(cDe,hacia)){
-                        pila4.quitar();
+                        pila4->quitar();
                     }else{
                         cout<<"No se puede mover esta carta"<<endl;
                     }   
@@ -426,153 +483,153 @@ bool moverHaciaSeccion2(Carta &cD,int hacia){
     cD.pintar();
     switch(hacia){
         case 1:
-            if(!lista1.isListaVacia()){
-                Carta &cH = lista1.ultimo->carta;
+            if(!lista1->isListaVacia()){
+                Carta &cH = lista1->ultimo->carta;
                 cout<<cD.GetColor()<<"!="<<cH.GetColor()<<endl;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista1.insertar(cD);
+                    lista1->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista1.insertar(cD);
+            lista1->insertar(cD);
             return true;
         case 2:
-            if(!lista2.isListaVacia()){
-                Carta &cH = lista2.ultimo->carta;
+            if(!lista2->isListaVacia()){
+                Carta &cH = lista2->ultimo->carta;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista2.insertar(cD);
+                    lista2->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista2.insertar(cD);
+            lista2->insertar(cD);
             return true;
         case 3:
-            if(!lista3.isListaVacia()){
-                Carta &cH = lista3.ultimo->carta;
+            if(!lista3->isListaVacia()){
+                Carta &cH = lista3->ultimo->carta;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista3.insertar(cD);
+                    lista3->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista3.insertar(cD);
+            lista3->insertar(cD);
             return true;
         case 4:
-            if(!lista4.isListaVacia()){
-                Carta &cH = lista4.ultimo->carta;
+            if(!lista4->isListaVacia()){
+                Carta &cH = lista4->ultimo->carta;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista4.insertar(cD);
+                    lista4->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista4.insertar(cD);
+            lista4->insertar(cD);
             return true;
         case 5:
-            if(!lista5.isListaVacia()){
-                Carta &cH = lista5.ultimo->carta;
+            if(!lista5->isListaVacia()){
+                Carta &cH = lista5->ultimo->carta;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista5.insertar(cD);
+                    lista5->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista5.insertar(cD);
+            lista5->insertar(cD);
             return true;
         case 6:
-            if(!lista6.isListaVacia()){
-                Carta &cH = lista6.ultimo->carta;
+            if(!lista6->isListaVacia()){
+                Carta &cH = lista6->ultimo->carta;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista6.insertar(cD);
+                    lista6->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista6.insertar(cD);
+            lista6->insertar(cD);
             return true;
         case 7:
-            if(!lista7.isListaVacia()){
-                Carta &cH = lista7.ultimo->carta;
+            if(!lista7->isListaVacia()){
+                Carta &cH = lista7->ultimo->carta;
                 if(cD.GetColor()!=cH.GetColor() && cD.GetNumero()==(cH.GetNumero()-1)){
-                    lista7.insertar(cD);
+                    lista7->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }
-            lista7.insertar(cD);
+            lista7->insertar(cD);
             return true;
         case 8:
-            if(!pila1.pilaVacia()){
-                Carta &cH = pila1.cimaPila();
+            if(!pila1->pilaVacia()){
+                Carta &cH = pila1->cimaPila();
                 if(cD.GetNombre()==cH.GetNombre() && cD.GetNumero()==(cH.GetNumero()+1)){
-                    pila1.insertar(cD);
+                    pila1->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }else{
                 if(cD.GetNumero()==1){
-                    pila1.insertar(cD);
+                    pila1->insertar(cD);
                     return true;
                 }
                 return false;
             }
             return true;
         case 9:
-            if(!pila2.pilaVacia()){
-                Carta &cH = pila2.cimaPila();
+            if(!pila2->pilaVacia()){
+                Carta &cH = pila2->cimaPila();
                 if(cD.GetNombre()==cH.GetNombre() && cD.GetNumero()==(cH.GetNumero()+1)){
-                    pila2.insertar(cD);
+                    pila2->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }else{
                 if(cD.GetNumero()==1){
-                    pila2.insertar(cD);
+                    pila2->insertar(cD);
                     return true;
                 }
                 return false;
             }
             return true;
         case 10:
-            if(!pila3.pilaVacia()){
-                Carta &cH = pila3.cimaPila();
+            if(!pila3->pilaVacia()){
+                Carta &cH = pila3->cimaPila();
                 if(cD.GetNombre()==cH.GetNombre() && cD.GetNumero()==(cH.GetNumero()+1)){
-                    pila3.insertar(cD);
+                    pila3->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }else{
                 if(cD.GetNumero()==1){
-                    pila3.insertar(cD);
+                    pila3->insertar(cD);
                     return true;
                 }
                 return false;
             }
             return true;
         case 11:
-            if(!pila4.pilaVacia()){
-                Carta &cH = pila4.cimaPila();
+            if(!pila4->pilaVacia()){
+                Carta &cH = pila4->cimaPila();
                 if(cD.GetNombre()==cH.GetNombre() && cD.GetNumero()==(cH.GetNumero()+1)){
-                    pila4.insertar(cD);
+                    pila4->insertar(cD);
                     return true;
                 }else{
                     return false;
                 }
             }else{
                 if(cD.GetNumero()==1){
-                    pila4.insertar(cD);
+                    pila4->insertar(cD);
                     return true;
                 }
                 return false;
@@ -585,51 +642,51 @@ void verCarta(int opcion,int fila,int numero){
     switch(fila){
         case 1:
             if(opcion==3){
-                lista1.getSiguiente(numero);
+                lista1->getSiguiente(numero);
             }else{
-               lista1.getAnterior(numero); 
+               lista1->getAnterior(numero); 
             }
             break;
         case 2:
             if(opcion==3){
-                lista2.getSiguiente(numero);
+                lista2->getSiguiente(numero);
             }else{
-               lista2.getAnterior(numero); 
+               lista2->getAnterior(numero); 
             }
             break;
         case 3:
             if(opcion==3){
-                lista3.getSiguiente(numero);
+                lista3->getSiguiente(numero);
             }else{
-               lista3.getAnterior(numero); 
+               lista3->getAnterior(numero); 
             }
             break;
         case 4:
             if(opcion==3){
-                lista4.getSiguiente(numero);
+                lista4->getSiguiente(numero);
             }else{
-               lista4.getAnterior(numero); 
+               lista4->getAnterior(numero); 
             }
             break;
         case 5:
             if(opcion==3){
-                lista5.getSiguiente(numero);
+                lista5->getSiguiente(numero);
             }else{
-               lista5.getAnterior(numero); 
+               lista5->getAnterior(numero); 
             }
             break;
         case 6:
             if(opcion==3){
-                lista6.getSiguiente(numero);
+                lista6->getSiguiente(numero);
             }else{
-               lista6.getAnterior(numero); 
+               lista6->getAnterior(numero); 
             }
             break;
         case 7:
             if(opcion==3){
-                lista7.getSiguiente(numero);
+                lista7->getSiguiente(numero);
             }else{
-               lista7.getAnterior(numero); 
+               lista7->getAnterior(numero); 
             }
             break;
     }
@@ -724,8 +781,8 @@ void seccion2(){
 void moverBoque(int tamanio,int desde,int hacia){
     switch(desde){
         case 1:
-            if(lista1.isTamanio(tamanio)){
-                Lista listTemp = lista1.getListaTamanio(tamanio);
+            if(lista1->isTamanio(tamanio)){
+                Lista listTemp = lista1->getListaTamanio(tamanio);
                 cout<<"tamanioLIsta: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -740,14 +797,14 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista1.quitarBloque(tamanio);
+                lista1->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
             break;
         case 2:
-            if(lista2.isTamanio(tamanio)){
-                Lista listTemp = lista2.getListaTamanio(tamanio);
+            if(lista2->isTamanio(tamanio)){
+                Lista listTemp = lista2->getListaTamanio(tamanio);
                 cout<<"tamanioLIsta: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -762,14 +819,14 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista2.quitarBloque(tamanio);
+                lista2->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
             break;
         case 3:
-            if(lista3.isTamanio(tamanio)){
-                Lista listTemp = lista3.getListaTamanio(tamanio);
+            if(lista3->isTamanio(tamanio)){
+                Lista listTemp = lista3->getListaTamanio(tamanio);
                 cout<<"tamanioLIsta: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -784,14 +841,14 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista3.quitarBloque(tamanio);
+                lista3->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
             break;
         case 4:
-            if(lista4.isTamanio(tamanio)){
-                Lista listTemp = lista4.getListaTamanio(tamanio);
+            if(lista4->isTamanio(tamanio)){
+                Lista listTemp = lista4->getListaTamanio(tamanio);
                 cout<<"tamanioLIsta: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -806,14 +863,14 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista4.quitarBloque(tamanio);
+                lista4->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
             break;
         case 5:
-            if(lista5.isTamanio(tamanio)){
-                Lista listTemp = lista5.getListaTamanio(tamanio);
+            if(lista5->isTamanio(tamanio)){
+                Lista listTemp = lista5->getListaTamanio(tamanio);
                 cout<<"tamanioLIsta: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -828,14 +885,14 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista5.quitarBloque(tamanio);
+                lista5->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
             break;
         case 6:
-            if(lista6.isTamanio(tamanio)){
-                Lista listTemp = lista6.getListaTamanio(tamanio);
+            if(lista6->isTamanio(tamanio)){
+                Lista listTemp = lista6->getListaTamanio(tamanio);
                 cout<<"tamanioLIsta: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -850,14 +907,14 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista6.quitarBloque(tamanio);
+                lista6->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
             break;
         case 7:
-            if(lista7.isTamanio(tamanio)){
-                Lista listTemp = lista7.getListaTamanio(tamanio);
+            if(lista7->isTamanio(tamanio)){
+                Lista listTemp = lista7->getListaTamanio(tamanio);
                 cout<<"tamani: "<<listTemp.ultimo->posicion<<endl;
                 while (!listTemp.isListaVacia()) {
                     cout<<"no es vacia"<<endl;
@@ -872,7 +929,7 @@ void moverBoque(int tamanio,int desde,int hacia){
                     }
                     
                 }
-                lista7.quitarBloque(tamanio);
+                lista7->quitarBloque(tamanio);
             }else{
                 cout<<"No se puede mover este bloque"<<endl;
             }
@@ -902,7 +959,7 @@ void seccion3(){
     
 }
 bool isCompleto(){
-    if(cola1.colaVacia() && cola2.colaVacia() && lista1.isListaVacia() && lista2.isListaVacia() && lista3.isListaVacia() && lista4.isListaVacia() && lista5.isListaVacia() && lista6.isListaVacia() && lista7.isListaVacia()){
+    if(cola1->colaVacia() && cola2->colaVacia() && lista1->isListaVacia() && lista2->isListaVacia() && lista3->isListaVacia() && lista4->isListaVacia() && lista5->isListaVacia() && lista6->isListaVacia() && lista7->isListaVacia()){
         return false;
     }
     return true;
@@ -914,10 +971,8 @@ int main(int argc, char** argv) {
     iniciarBaraja();
     barajear();
     pintar();
-    
     bool opcion = true;
     int ipc;
-    
     
     while (opcion) {
         cout<<"1: Seccion 1\n2: Seccion 2\n3: Seccion 3\n4: Salir"<<endl;
@@ -940,25 +995,26 @@ int main(int argc, char** argv) {
             break;
             case 4:
                 opcion = false;
+                cola1->~Cola();
+                cola2->~Cola();
+                lista1->~Lista();
+                lista2->~Lista();
+                lista3->~Lista();
+                lista4->~Lista();
+                lista5->~Lista();
+                lista6->~Lista();
+                lista7->~Lista();
+                pila1->~Pila();
+                pila2->~Pila();
+                pila3->~Pila();
+                pila4->~Pila();
             break;
             
                 
         }
     }
     
-    cola1.~Cola();
-    cola2.~Cola();
-    lista1.~Lista();
-    lista2.~Lista();
-    lista3.~Lista();
-    lista4.~Lista();
-    lista5.~Lista();
-    lista6.~Lista();
-    lista7.~Lista();
-    pila1.~Pila();
-    pila2.~Pila();
-    pila3.~Pila();
-    pila4.~Pila();
+    pintar();
     
     return 0;
 }

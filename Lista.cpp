@@ -8,13 +8,14 @@ using namespace std;
 
 Lista::Lista() {
     primero = NULL;
+    
 }
 
 Lista::Lista(const Lista& orig) {
+    
 }
 
-Lista::~Lista() {
-}
+
 
 void Lista::insertar(Carta &c){
     NodoLista* nuevo;
@@ -70,6 +71,7 @@ void Lista::quitarPrimero(){
         tamanio--;
         delete nodo;
     }
+    
 }
 
 void Lista::quitarUltimo(){
@@ -117,12 +119,12 @@ bool Lista::isTamanio(int numero){
 void Lista::desplegarLista(){
     NodoLista* actual;
     actual = primero;
-    
-    actual = primero;
+
     if (!isListaVacia()) {
         
         while (actual!=NULL) {
             Carta &c = actual->carta;
+            //cout<<actual->posicion<<endl;
             if(c.GetNumero()<10){
                 cout<<"      "<<ends;
             }else{
@@ -144,7 +146,7 @@ void Lista::desplegarLista(){
         cout<<""<<endl;
         cout<<""<<endl;
     }else{
-        cout<<"       "<<"_______"<<endl;
+        cout<<"    _______"<<endl;
         cout<<"       "<<"|     |"<<endl;
         cout<<"       "<<"¯¯¯¯¯¯¯"<<endl;
     }
@@ -173,6 +175,7 @@ Carta& Lista::getUltimo(){
 }
 
 bool Lista::isListaVacia(){
+    
     return primero == NULL;
 }
 
@@ -222,4 +225,34 @@ void Lista::getSiguiente(int numero){
         }
         actual = actual->siguiente;
     }
+}
+
+Lista::~Lista() {
+    
+    if(!isListaVacia()){
+        while (!isListaVacia()) {
+        if (isListaVacia()) {
+        throw "La lista esta vacia";
+        }else if(primero==ultimo){
+            primero = NULL;
+            ultimo = NULL;
+            tamanio=0;
+        }else{
+            //Carta &aux = ultimo->carta;
+            //aux.pintar();
+
+            NodoLista* nodo = ultimo;
+            ultimo = ultimo->anterio;
+            ultimo->siguiente = NULL;
+            ultimo->carta.SetEstado(1);
+            tamanio--;
+            delete nodo;
+        }
+        }
+        NodoLista* nodo = primero;
+        primero=NULL;
+        ultimo = NULL;
+        delete nodo;
+    }
+
 }
